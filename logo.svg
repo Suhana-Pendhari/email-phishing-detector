@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#38bdf8"/>
+      <stop offset="100%" style="stop-color:#818cf8"/>
+    </linearGradient>
+    <linearGradient id="hookGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#94a3b8"/>
+      <stop offset="100%" style="stop-color:#64748b"/>
+    </linearGradient>
+    <linearGradient id="lineGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#38bdf8;stop-opacity:0.8"/>
+    </linearGradient>
+    <linearGradient id="envGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e293b"/>
+      <stop offset="100%" style="stop-color:#0f172a"/>
+    </linearGradient>
+    <linearGradient id="envFlapGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#334155"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <linearGradient id="warnGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f87171"/>
+      <stop offset="100%" style="stop-color:#ef4444"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="softShadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="256" cy="256" r="240" fill="#0a0e14"/>
+  <circle cx="256" cy="256" r="240" fill="none" stroke="url(#shieldGrad)" stroke-width="3" opacity="0.4"/>
+
+  <!-- Fishing line - curves from top to the hook -->
+  <path d="M 310 45 Q 310 120 300 170 Q 290 220 280 260 Q 270 290 265 310"
+        fill="none" stroke="url(#lineGrad)" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Small rod tip at top -->
+  <line x1="280" y1="35" x2="340" y2="55" stroke="#64748b" stroke-width="4" stroke-linecap="round"/>
+  <line x1="310" y1="45" x2="340" y2="55" stroke="#94a3b8" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="310" cy="45" r="3" fill="#38bdf8" opacity="0.8"/>
+
+  <!-- Fishing Hook -->
+  <g filter="url(#glow)">
+    <path d="M 265 310 
+             L 265 340
+             Q 265 380 240 395
+             Q 215 410 200 395
+             Q 185 380 200 365
+             L 215 355
+             L 205 345"
+          fill="none" stroke="url(#hookGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Hook barb -->
+    <path d="M 215 355 L 225 348 L 218 342"
+          fill="none" stroke="#94a3b8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Hook point -->
+    <circle cx="200" cy="365" r="2.5" fill="#e2e8f0"/>
+  </g>
+
+  <!-- Email Envelope - hooked and tilted -->
+  <g transform="translate(256, 300) rotate(-12)" filter="url(#softShadow)">
+    <!-- Envelope body -->
+    <rect x="-75" y="-45" width="150" height="100" rx="8" fill="url(#envGrad)" stroke="#334155" stroke-width="2"/>
+    
+    <!-- Envelope flap (open, being pulled up) -->
+    <path d="M -75 -45 L 0 15 L 75 -45" fill="url(#envFlapGrad)" stroke="#475569" stroke-width="1.5" stroke-linejoin="round"/>
+    
+    <!-- Envelope bottom V lines -->
+    <path d="M -75 55 L -10 10" fill="none" stroke="#334155" stroke-width="1.5"/>
+    <path d="M 75 55 L 10 10" fill="none" stroke="#334155" stroke-width="1.5"/>
+    
+    <!-- @ symbol on envelope -->
+    <text x="0" y="45" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#38bdf8" opacity="0.6">@</text>
+
+    <!-- Warning triangle on envelope -->
+    <g transform="translate(48, -28)">
+      <polygon points="0,-14 12,10 -12,10" fill="url(#warnGrad)" stroke="#fca5a5" stroke-width="1"/>
+      <text x="0" y="7" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="900" fill="white">!</text>
+    </g>
+  </g>
+
+  <!-- Small accent dots representing data/scanning -->
+  <circle cx="155" cy="190" r="3" fill="#38bdf8" opacity="0.3"/>
+  <circle cx="140" cy="220" r="2" fill="#818cf8" opacity="0.25"/>
+  <circle cx="165" cy="245" r="2.5" fill="#38bdf8" opacity="0.2"/>
+  <circle cx="350" cy="200" r="2.5" fill="#818cf8" opacity="0.25"/>
+  <circle cx="370" cy="230" r="2" fill="#38bdf8" opacity="0.2"/>
+  <circle cx="345" cy="260" r="3" fill="#38bdf8" opacity="0.15"/>
+
+  <!-- PhishGuard text -->
+  <text x="256" y="450" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="42" font-weight="800" letter-spacing="-1">
+    <tspan fill="#e8edf3">Detect</tspan><tspan fill="#38bdf8">Phish</tspan>
+  </text>
+  <text x="256" y="475" text-anchor="middle" font-family="'Courier New', monospace" font-size="11" fill="#64748b" letter-spacing="4">AI-POWERED PHISHING DETECTION</text>
+</svg>
